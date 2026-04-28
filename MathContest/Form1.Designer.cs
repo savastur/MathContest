@@ -29,29 +29,29 @@
         private void InitializeComponent()
         {
             this.studentInformatoinBox = new System.Windows.Forms.GroupBox();
+            this.ageBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.gradeBox = new System.Windows.Forms.TextBox();
-            this.ageBox = new System.Windows.Forms.TextBox();
             this.nameBox = new System.Windows.Forms.TextBox();
             this.signSelctionbox = new System.Windows.Forms.GroupBox();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.divideButton = new System.Windows.Forms.RadioButton();
+            this.multiplyButton = new System.Windows.Forms.RadioButton();
+            this.subtractButton = new System.Windows.Forms.RadioButton();
+            this.addButton = new System.Windows.Forms.RadioButton();
             this.problemBox = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.studentAnswer = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.firstNumberlabel = new System.Windows.Forms.Label();
             this.secondNumbertext = new System.Windows.Forms.TextBox();
             this.firstNumbertext = new System.Windows.Forms.TextBox();
-            this.firstNumberlabel = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.buttonBox = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.studentAnswer = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.exitButton = new System.Windows.Forms.Button();
+            this.summeryButton = new System.Windows.Forms.Button();
+            this.clearButton = new System.Windows.Forms.Button();
+            this.submitButton = new System.Windows.Forms.Button();
             this.studentInformatoinBox.SuspendLayout();
             this.signSelctionbox.SuspendLayout();
             this.problemBox.SuspendLayout();
@@ -61,11 +61,11 @@
             // studentInformatoinBox
             // 
             this.studentInformatoinBox.AccessibleName = "StudentInfoBox";
+            this.studentInformatoinBox.Controls.Add(this.ageBox);
             this.studentInformatoinBox.Controls.Add(this.label3);
             this.studentInformatoinBox.Controls.Add(this.label2);
             this.studentInformatoinBox.Controls.Add(this.label1);
             this.studentInformatoinBox.Controls.Add(this.gradeBox);
-            this.studentInformatoinBox.Controls.Add(this.ageBox);
             this.studentInformatoinBox.Controls.Add(this.nameBox);
             this.studentInformatoinBox.Location = new System.Drawing.Point(12, 12);
             this.studentInformatoinBox.Name = "studentInformatoinBox";
@@ -73,6 +73,23 @@
             this.studentInformatoinBox.TabIndex = 0;
             this.studentInformatoinBox.TabStop = false;
             this.studentInformatoinBox.Text = "Student Information";
+            // 
+            // ageBox
+            // 
+            this.ageBox.AccessibleName = "AgeBox";
+            this.ageBox.FormattingEnabled = true;
+            this.ageBox.Items.AddRange(new object[] {
+            "",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11"});
+            this.ageBox.Location = new System.Drawing.Point(141, 38);
+            this.ageBox.Name = "ageBox";
+            this.ageBox.Size = new System.Drawing.Size(46, 24);
+            this.ageBox.TabIndex = 6;
+            this.ageBox.SelectedIndexChanged += new System.EventHandler(this.ageBox_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -86,7 +103,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(155, 21);
+            this.label2.Location = new System.Drawing.Point(138, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(32, 16);
             this.label2.TabIndex = 4;
@@ -108,14 +125,7 @@
             this.gradeBox.Name = "gradeBox";
             this.gradeBox.Size = new System.Drawing.Size(44, 22);
             this.gradeBox.TabIndex = 2;
-            // 
-            // ageBox
-            // 
-            this.ageBox.AccessibleName = "AgeBox";
-            this.ageBox.Location = new System.Drawing.Point(155, 40);
-            this.ageBox.Name = "ageBox";
-            this.ageBox.Size = new System.Drawing.Size(44, 22);
-            this.ageBox.TabIndex = 1;
+            this.gradeBox.TextChanged += new System.EventHandler(this.gradeBox_TextChanged);
             // 
             // nameBox
             // 
@@ -124,14 +134,15 @@
             this.nameBox.Name = "nameBox";
             this.nameBox.Size = new System.Drawing.Size(100, 22);
             this.nameBox.TabIndex = 0;
+            this.nameBox.TextChanged += new System.EventHandler(this.nameBox_TextChanged);
             // 
             // signSelctionbox
             // 
             this.signSelctionbox.AccessibleName = "SignSelectionBox";
-            this.signSelctionbox.Controls.Add(this.radioButton4);
-            this.signSelctionbox.Controls.Add(this.radioButton3);
-            this.signSelctionbox.Controls.Add(this.radioButton2);
-            this.signSelctionbox.Controls.Add(this.radioButton1);
+            this.signSelctionbox.Controls.Add(this.divideButton);
+            this.signSelctionbox.Controls.Add(this.multiplyButton);
+            this.signSelctionbox.Controls.Add(this.subtractButton);
+            this.signSelctionbox.Controls.Add(this.addButton);
             this.signSelctionbox.Location = new System.Drawing.Point(11, 127);
             this.signSelctionbox.Name = "signSelctionbox";
             this.signSelctionbox.Size = new System.Drawing.Size(200, 175);
@@ -139,49 +150,53 @@
             this.signSelctionbox.TabStop = false;
             this.signSelctionbox.Text = "Math Problem Type";
             // 
-            // radioButton4
+            // divideButton
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(52, 129);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(76, 20);
-            this.radioButton4.TabIndex = 3;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Division";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.divideButton.AccessibleName = "DivideButton";
+            this.divideButton.AutoSize = true;
+            this.divideButton.Location = new System.Drawing.Point(52, 119);
+            this.divideButton.Name = "divideButton";
+            this.divideButton.Size = new System.Drawing.Size(76, 20);
+            this.divideButton.TabIndex = 3;
+            this.divideButton.TabStop = true;
+            this.divideButton.Text = "Division";
+            this.divideButton.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // multiplyButton
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(49, 103);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(102, 20);
-            this.radioButton3.TabIndex = 2;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Multipication";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.multiplyButton.AccessibleName = "MultiplyButton";
+            this.multiplyButton.AutoSize = true;
+            this.multiplyButton.Location = new System.Drawing.Point(52, 93);
+            this.multiplyButton.Name = "multiplyButton";
+            this.multiplyButton.Size = new System.Drawing.Size(102, 20);
+            this.multiplyButton.TabIndex = 2;
+            this.multiplyButton.TabStop = true;
+            this.multiplyButton.Text = "Multipication";
+            this.multiplyButton.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // subtractButton
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(49, 77);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(88, 20);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Subtration";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.subtractButton.AccessibleName = "SubtractButton";
+            this.subtractButton.AutoSize = true;
+            this.subtractButton.Location = new System.Drawing.Point(52, 67);
+            this.subtractButton.Name = "subtractButton";
+            this.subtractButton.Size = new System.Drawing.Size(88, 20);
+            this.subtractButton.TabIndex = 1;
+            this.subtractButton.TabStop = true;
+            this.subtractButton.Text = "Subtration";
+            this.subtractButton.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // addButton
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(52, 43);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(77, 20);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Addition";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.addButton.AccessibleName = "AddButton";
+            this.addButton.AutoSize = true;
+            this.addButton.Location = new System.Drawing.Point(52, 43);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(77, 20);
+            this.addButton.TabIndex = 0;
+            this.addButton.TabStop = true;
+            this.addButton.Text = "Addition";
+            this.addButton.UseVisualStyleBackColor = true;
             // 
             // problemBox
             // 
@@ -199,28 +214,22 @@
             this.problemBox.TabStop = false;
             this.problemBox.Text = "Math Problem";
             // 
-            // secondNumbertext
+            // label4
             // 
-            this.secondNumbertext.Location = new System.Drawing.Point(41, 90);
-            this.secondNumbertext.Name = "secondNumbertext";
-            this.secondNumbertext.Size = new System.Drawing.Size(100, 22);
-            this.secondNumbertext.TabIndex = 1;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(40, 128);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(99, 16);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Student Answer";
             // 
-            // firstNumbertext
+            // studentAnswer
             // 
-            this.firstNumbertext.Location = new System.Drawing.Point(29, 45);
-            this.firstNumbertext.Name = "firstNumbertext";
-            this.firstNumbertext.Size = new System.Drawing.Size(100, 22);
-            this.firstNumbertext.TabIndex = 0;
-            // 
-            // firstNumberlabel
-            // 
-            this.firstNumberlabel.AutoSize = true;
-            this.firstNumberlabel.Location = new System.Drawing.Point(26, 26);
-            this.firstNumberlabel.Name = "firstNumberlabel";
-            this.firstNumberlabel.Size = new System.Drawing.Size(83, 16);
-            this.firstNumberlabel.TabIndex = 2;
-            this.firstNumberlabel.Text = "First Number";
+            this.studentAnswer.AccessibleName = "StudentAnswer";
+            this.studentAnswer.Location = new System.Drawing.Point(43, 147);
+            this.studentAnswer.Name = "studentAnswer";
+            this.studentAnswer.Size = new System.Drawing.Size(100, 22);
+            this.studentAnswer.TabIndex = 4;
             // 
             // label5
             // 
@@ -231,71 +240,83 @@
             this.label5.TabIndex = 3;
             this.label5.Text = "Second Number";
             // 
+            // firstNumberlabel
+            // 
+            this.firstNumberlabel.AutoSize = true;
+            this.firstNumberlabel.Location = new System.Drawing.Point(26, 26);
+            this.firstNumberlabel.Name = "firstNumberlabel";
+            this.firstNumberlabel.Size = new System.Drawing.Size(83, 16);
+            this.firstNumberlabel.TabIndex = 2;
+            this.firstNumberlabel.Text = "First Number";
+            // 
+            // secondNumbertext
+            // 
+            this.secondNumbertext.Location = new System.Drawing.Point(41, 90);
+            this.secondNumbertext.Name = "secondNumbertext";
+            this.secondNumbertext.ReadOnly = true;
+            this.secondNumbertext.Size = new System.Drawing.Size(100, 22);
+            this.secondNumbertext.TabIndex = 1;
+            // 
+            // firstNumbertext
+            // 
+            this.firstNumbertext.Location = new System.Drawing.Point(29, 45);
+            this.firstNumbertext.Name = "firstNumbertext";
+            this.firstNumbertext.ReadOnly = true;
+            this.firstNumbertext.Size = new System.Drawing.Size(100, 22);
+            this.firstNumbertext.TabIndex = 0;
+            // 
             // buttonBox
             // 
             this.buttonBox.AccessibleName = "ButtonBox";
-            this.buttonBox.Controls.Add(this.button4);
-            this.buttonBox.Controls.Add(this.button3);
-            this.buttonBox.Controls.Add(this.button2);
-            this.buttonBox.Controls.Add(this.button1);
+            this.buttonBox.Controls.Add(this.exitButton);
+            this.buttonBox.Controls.Add(this.summeryButton);
+            this.buttonBox.Controls.Add(this.clearButton);
+            this.buttonBox.Controls.Add(this.submitButton);
             this.buttonBox.Location = new System.Drawing.Point(452, 33);
             this.buttonBox.Name = "buttonBox";
             this.buttonBox.Size = new System.Drawing.Size(336, 360);
             this.buttonBox.TabIndex = 3;
             this.buttonBox.TabStop = false;
             // 
-            // button1
+            // exitButton
             // 
-            this.button1.Location = new System.Drawing.Point(131, 18);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Submit";
-            this.button1.UseVisualStyleBackColor = true;
+            this.exitButton.AccessibleName = "ExitButton";
+            this.exitButton.Location = new System.Drawing.Point(131, 171);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(75, 23);
+            this.exitButton.TabIndex = 3;
+            this.exitButton.Text = "Exit";
+            this.exitButton.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // summeryButton
             // 
-            this.button2.Location = new System.Drawing.Point(131, 65);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Clear";
-            this.button2.UseVisualStyleBackColor = true;
+            this.summeryButton.AccessibleName = "SummeryButton";
+            this.summeryButton.Location = new System.Drawing.Point(131, 113);
+            this.summeryButton.Name = "summeryButton";
+            this.summeryButton.Size = new System.Drawing.Size(75, 23);
+            this.summeryButton.TabIndex = 2;
+            this.summeryButton.Text = "Summery";
+            this.summeryButton.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // clearButton
             // 
-            this.button3.Location = new System.Drawing.Point(131, 113);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Summery";
-            this.button3.UseVisualStyleBackColor = true;
+            this.clearButton.AccessibleName = "ClearButton";
+            this.clearButton.Location = new System.Drawing.Point(131, 65);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(75, 23);
+            this.clearButton.TabIndex = 1;
+            this.clearButton.Text = "Clear";
+            this.clearButton.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // submitButton
             // 
-            this.button4.Location = new System.Drawing.Point(131, 171);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Exit";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // studentAnswer
-            // 
-            this.studentAnswer.AccessibleName = "StudentAnswer";
-            this.studentAnswer.Location = new System.Drawing.Point(43, 147);
-            this.studentAnswer.Name = "studentAnswer";
-            this.studentAnswer.Size = new System.Drawing.Size(100, 22);
-            this.studentAnswer.TabIndex = 4;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(40, 128);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(99, 16);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Student Answer";
+            this.submitButton.AccessibleName = "SubmitButton";
+            this.submitButton.Location = new System.Drawing.Point(131, 18);
+            this.submitButton.Name = "submitButton";
+            this.submitButton.Size = new System.Drawing.Size(75, 23);
+            this.submitButton.TabIndex = 0;
+            this.submitButton.Text = "Submit";
+            this.submitButton.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -323,28 +344,28 @@
 
         private System.Windows.Forms.GroupBox studentInformatoinBox;
         private System.Windows.Forms.TextBox gradeBox;
-        private System.Windows.Forms.TextBox ageBox;
         private System.Windows.Forms.TextBox nameBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox signSelctionbox;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton divideButton;
+        private System.Windows.Forms.RadioButton multiplyButton;
+        private System.Windows.Forms.RadioButton subtractButton;
+        private System.Windows.Forms.RadioButton addButton;
         private System.Windows.Forms.GroupBox problemBox;
         private System.Windows.Forms.TextBox secondNumbertext;
         private System.Windows.Forms.TextBox firstNumbertext;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label firstNumberlabel;
         private System.Windows.Forms.GroupBox buttonBox;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.Button summeryButton;
+        private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox studentAnswer;
+        private System.Windows.Forms.ComboBox ageBox;
     }
 }
 
