@@ -3,12 +3,12 @@
  * [x] Limit grade 1-4 appear yellow when out of range
  * [x] Limit age 7-11 appear yellow when out of range
  * [x] Lock Submit button until all fields are filled ( grade, name, and age)
- * [] Lock the Summary button until the submit button has been clicked once
+ * [x] Lock the Summary button until the submit button has been clicked once
  * [x] Allow selection of add, divde, multiply, and subtract operations
  * [x] set up message box for submit button
- * [] set up message box for summary
+ * [x] set up message box for summary
  * [x] verify the student answer when the they press the submit button
- * [] Creat a tally of how many the student got correct
+ * [x] Creat a tally of how many the student got correct
 */
 using System;
 using System.Collections.Generic;
@@ -31,13 +31,21 @@ namespace MathContest
             InitializeComponent();
             Defults();
         }
+        int corretAnswertracker = 0;
+        int incorrectAnswerTracker = 0;
         /// Sets the defults of the program
         void Defults()
         {
             addButton.Checked = true;
             submitButton.Enabled = false;
             summeryButton.Enabled = false;
+            incorrectAnswerTracker = 0;
+            corretAnswertracker = 0; 
+            InformationBox.Text = string.Empty;
+            firstNumbertext.Text = string.Empty;
+            secondNumbertext.Text = string.Empty;
         }
+        /// Creates the random Numbers for the math contest
         private int RandomNumberGenerator()
         {
             Random randomNumber = new Random();
@@ -73,11 +81,11 @@ namespace MathContest
             {
                 nameBox.BackColor= Color.White;
             }
+            /// Lets the user know when the age box is imporperly filled 
             if(verifyName == "")
             {
                 ageBox.BackColor = Color.LightYellow;
             }
-            /// Lets the user know when the age box is imporperly filled 
             try
             {
                 int ageNumber = Convert.ToInt16(verifyAge);
@@ -138,7 +146,6 @@ namespace MathContest
         private void nameBox_TextChanged(object sender, EventArgs e)
         {
             Defults();
-            NameTracker();
             Verify();
         }
         /// Only enterd when grade box is changed
@@ -159,35 +166,42 @@ namespace MathContest
         private bool ConfirmName()
         {
             string name = nameBox.Text;
-            return NameTracker() == name;
-        }
-        /// Name tracker creates a memory of the name that's wich can be called uppon when needed.
-        private string NameTracker()
-        {
-            string[] name = new string[1];
-            name[0] = nameBox.Text;
-            return name[0];
+            if (name == "")
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            int answer = Operations(out answer);
+            summeryButton.Enabled = true; //Enables summery button as soon as the submit button is pressed
+            double answer = Operations(out answer);
             string contestentAnswer = studentAnswer.Text;
             string answercComparison = answer.ToString();
+            InformationBox.Text = ""; // clears the information box
+            // Tallys when right
             if (answercComparison == contestentAnswer)
             {
                 MessageBox.Show("That is the correct answer");
+                corretAnswertracker++;
                 RandomNumberGenerator();
             }
+            // Tallys when wrong 
             if (answercComparison != contestentAnswer)
             {
                 MessageBox.Show($"That is not the correct answer, the answer is {answer}.");
+                incorrectAnswerTracker++;
                 RandomNumberGenerator();
             }
+
         }
         ///This method is the operation control for the math contest.
         ///It takes the first Number and second Number the performs the operation selected
-        private int Operations(out int answer)
+        private double Operations(out double answer)
         {
            //Converts the text box of the fist and second number into it's integer equivalent.
            int firstNumber = int.Parse(firstNumbertext.Text);
@@ -213,6 +227,29 @@ namespace MathContest
                 return answer;
            }
            return answer = 0;
+        }
+        /// Gives a summery of answered questions 
+        private void summeryButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show($"{nameBox.Text} answered {corretAnswertracker} correctly and aswered {incorrectAnswerTracker} incorrectly");
+        }
+
+        private void divideButton_CheckedChanged(object sender, EventArgs e)
+        {
+            InformationBox.Text = "Round to the nearest whole number.";
+        }
+        /// Resets info
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            ageBox.Text = string.Empty;
+            gradeBox.Text = string.Empty;
+            nameBox.Text = string.Empty;
+            Defults();
+        }
+        /// Close program
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

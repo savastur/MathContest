@@ -30,9 +30,9 @@
         {
             this.studentInformatoinBox = new System.Windows.Forms.GroupBox();
             this.ageBox = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.GradeLabel = new System.Windows.Forms.Label();
+            this.AgeLabel = new System.Windows.Forms.Label();
+            this.NameLabel = new System.Windows.Forms.Label();
             this.gradeBox = new System.Windows.Forms.TextBox();
             this.nameBox = new System.Windows.Forms.TextBox();
             this.signSelctionbox = new System.Windows.Forms.GroupBox();
@@ -41,10 +41,10 @@
             this.subtractButton = new System.Windows.Forms.RadioButton();
             this.addButton = new System.Windows.Forms.RadioButton();
             this.problemBox = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.StudentAnswerLabel = new System.Windows.Forms.Label();
             this.studentAnswer = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.firstNumberlabel = new System.Windows.Forms.Label();
+            this.SecondNumberLabel = new System.Windows.Forms.Label();
+            this.FirstNumberLabel = new System.Windows.Forms.Label();
             this.secondNumbertext = new System.Windows.Forms.TextBox();
             this.firstNumbertext = new System.Windows.Forms.TextBox();
             this.buttonBox = new System.Windows.Forms.GroupBox();
@@ -52,6 +52,8 @@
             this.summeryButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
             this.submitButton = new System.Windows.Forms.Button();
+            this.InformationBox = new System.Windows.Forms.RichTextBox();
+            this.InfromationLabel = new System.Windows.Forms.Label();
             this.studentInformatoinBox.SuspendLayout();
             this.signSelctionbox.SuspendLayout();
             this.problemBox.SuspendLayout();
@@ -62,9 +64,9 @@
             // 
             this.studentInformatoinBox.AccessibleName = "StudentInfoBox";
             this.studentInformatoinBox.Controls.Add(this.ageBox);
-            this.studentInformatoinBox.Controls.Add(this.label3);
-            this.studentInformatoinBox.Controls.Add(this.label2);
-            this.studentInformatoinBox.Controls.Add(this.label1);
+            this.studentInformatoinBox.Controls.Add(this.GradeLabel);
+            this.studentInformatoinBox.Controls.Add(this.AgeLabel);
+            this.studentInformatoinBox.Controls.Add(this.NameLabel);
             this.studentInformatoinBox.Controls.Add(this.gradeBox);
             this.studentInformatoinBox.Controls.Add(this.nameBox);
             this.studentInformatoinBox.Location = new System.Drawing.Point(12, 12);
@@ -91,32 +93,35 @@
             this.ageBox.TabIndex = 6;
             this.ageBox.SelectedIndexChanged += new System.EventHandler(this.ageBox_SelectedIndexChanged);
             // 
-            // label3
+            // GradeLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(218, 21);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 16);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Grade";
+            this.GradeLabel.AccessibleName = "gradeLabel";
+            this.GradeLabel.AutoSize = true;
+            this.GradeLabel.Location = new System.Drawing.Point(218, 21);
+            this.GradeLabel.Name = "GradeLabel";
+            this.GradeLabel.Size = new System.Drawing.Size(45, 16);
+            this.GradeLabel.TabIndex = 5;
+            this.GradeLabel.Text = "Grade";
             // 
-            // label2
+            // AgeLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(138, 19);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 16);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Age";
+            this.AgeLabel.AccessibleName = "ageLabel";
+            this.AgeLabel.AutoSize = true;
+            this.AgeLabel.Location = new System.Drawing.Point(138, 19);
+            this.AgeLabel.Name = "AgeLabel";
+            this.AgeLabel.Size = new System.Drawing.Size(32, 16);
+            this.AgeLabel.TabIndex = 4;
+            this.AgeLabel.Text = "Age";
             // 
-            // label1
+            // NameLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 16);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Name";
+            this.NameLabel.AccessibleName = "nameLabel";
+            this.NameLabel.AutoSize = true;
+            this.NameLabel.Location = new System.Drawing.Point(6, 21);
+            this.NameLabel.Name = "NameLabel";
+            this.NameLabel.Size = new System.Drawing.Size(44, 16);
+            this.NameLabel.TabIndex = 3;
+            this.NameLabel.Text = "Name";
             // 
             // gradeBox
             // 
@@ -161,6 +166,7 @@
             this.divideButton.TabStop = true;
             this.divideButton.Text = "Division";
             this.divideButton.UseVisualStyleBackColor = true;
+            this.divideButton.CheckedChanged += new System.EventHandler(this.divideButton_CheckedChanged);
             // 
             // multiplyButton
             // 
@@ -201,10 +207,10 @@
             // problemBox
             // 
             this.problemBox.AccessibleName = "ProblemBox";
-            this.problemBox.Controls.Add(this.label4);
+            this.problemBox.Controls.Add(this.StudentAnswerLabel);
             this.problemBox.Controls.Add(this.studentAnswer);
-            this.problemBox.Controls.Add(this.label5);
-            this.problemBox.Controls.Add(this.firstNumberlabel);
+            this.problemBox.Controls.Add(this.SecondNumberLabel);
+            this.problemBox.Controls.Add(this.FirstNumberLabel);
             this.problemBox.Controls.Add(this.secondNumbertext);
             this.problemBox.Controls.Add(this.firstNumbertext);
             this.problemBox.Location = new System.Drawing.Point(217, 127);
@@ -214,14 +220,15 @@
             this.problemBox.TabStop = false;
             this.problemBox.Text = "Math Problem";
             // 
-            // label4
+            // StudentAnswerLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(40, 128);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(99, 16);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Student Answer";
+            this.StudentAnswerLabel.AccessibleName = "studentAnswerlabel";
+            this.StudentAnswerLabel.AutoSize = true;
+            this.StudentAnswerLabel.Location = new System.Drawing.Point(40, 128);
+            this.StudentAnswerLabel.Name = "StudentAnswerLabel";
+            this.StudentAnswerLabel.Size = new System.Drawing.Size(99, 16);
+            this.StudentAnswerLabel.TabIndex = 5;
+            this.StudentAnswerLabel.Text = "Student Answer";
             // 
             // studentAnswer
             // 
@@ -231,23 +238,25 @@
             this.studentAnswer.Size = new System.Drawing.Size(100, 22);
             this.studentAnswer.TabIndex = 4;
             // 
-            // label5
+            // SecondNumberLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(38, 71);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(105, 16);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Second Number";
+            this.SecondNumberLabel.AccessibleName = "secondNumberLabel";
+            this.SecondNumberLabel.AutoSize = true;
+            this.SecondNumberLabel.Location = new System.Drawing.Point(38, 71);
+            this.SecondNumberLabel.Name = "SecondNumberLabel";
+            this.SecondNumberLabel.Size = new System.Drawing.Size(105, 16);
+            this.SecondNumberLabel.TabIndex = 3;
+            this.SecondNumberLabel.Text = "Second Number";
             // 
-            // firstNumberlabel
+            // FirstNumberLabel
             // 
-            this.firstNumberlabel.AutoSize = true;
-            this.firstNumberlabel.Location = new System.Drawing.Point(38, 26);
-            this.firstNumberlabel.Name = "firstNumberlabel";
-            this.firstNumberlabel.Size = new System.Drawing.Size(83, 16);
-            this.firstNumberlabel.TabIndex = 2;
-            this.firstNumberlabel.Text = "First Number";
+            this.FirstNumberLabel.AccessibleName = "firstNumberlabel";
+            this.FirstNumberLabel.AutoSize = true;
+            this.FirstNumberLabel.Location = new System.Drawing.Point(38, 26);
+            this.FirstNumberLabel.Name = "FirstNumberLabel";
+            this.FirstNumberLabel.Size = new System.Drawing.Size(83, 16);
+            this.FirstNumberLabel.TabIndex = 2;
+            this.FirstNumberLabel.Text = "First Number";
             // 
             // secondNumbertext
             // 
@@ -272,58 +281,88 @@
             this.buttonBox.Controls.Add(this.summeryButton);
             this.buttonBox.Controls.Add(this.clearButton);
             this.buttonBox.Controls.Add(this.submitButton);
-            this.buttonBox.Location = new System.Drawing.Point(452, 33);
+            this.buttonBox.Location = new System.Drawing.Point(452, 12);
             this.buttonBox.Name = "buttonBox";
-            this.buttonBox.Size = new System.Drawing.Size(336, 360);
+            this.buttonBox.Size = new System.Drawing.Size(336, 381);
             this.buttonBox.TabIndex = 3;
             this.buttonBox.TabStop = false;
             // 
             // exitButton
             // 
             this.exitButton.AccessibleName = "ExitButton";
-            this.exitButton.Location = new System.Drawing.Point(131, 171);
+            this.exitButton.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exitButton.Location = new System.Drawing.Point(6, 279);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(75, 23);
+            this.exitButton.Size = new System.Drawing.Size(324, 86);
             this.exitButton.TabIndex = 3;
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // summeryButton
             // 
             this.summeryButton.AccessibleName = "SummeryButton";
-            this.summeryButton.Location = new System.Drawing.Point(131, 113);
+            this.summeryButton.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.summeryButton.Location = new System.Drawing.Point(6, 199);
             this.summeryButton.Name = "summeryButton";
-            this.summeryButton.Size = new System.Drawing.Size(75, 23);
+            this.summeryButton.Size = new System.Drawing.Size(324, 74);
             this.summeryButton.TabIndex = 2;
             this.summeryButton.Text = "Summery";
             this.summeryButton.UseVisualStyleBackColor = true;
+            this.summeryButton.Click += new System.EventHandler(this.summeryButton_Click);
             // 
             // clearButton
             // 
             this.clearButton.AccessibleName = "ClearButton";
-            this.clearButton.Location = new System.Drawing.Point(131, 65);
+            this.clearButton.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearButton.Location = new System.Drawing.Point(6, 105);
             this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(75, 23);
+            this.clearButton.Size = new System.Drawing.Size(324, 71);
             this.clearButton.TabIndex = 1;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // submitButton
             // 
             this.submitButton.AccessibleName = "SubmitButton";
-            this.submitButton.Location = new System.Drawing.Point(131, 18);
+            this.submitButton.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.submitButton.Location = new System.Drawing.Point(6, 21);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(75, 23);
+            this.submitButton.Size = new System.Drawing.Size(324, 78);
             this.submitButton.TabIndex = 0;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
             this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
+            // 
+            // InformationBox
+            // 
+            this.InformationBox.AccessibleName = "informationBox";
+            this.InformationBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InformationBox.Location = new System.Drawing.Point(12, 331);
+            this.InformationBox.Name = "InformationBox";
+            this.InformationBox.ReadOnly = true;
+            this.InformationBox.Size = new System.Drawing.Size(400, 109);
+            this.InformationBox.TabIndex = 4;
+            this.InformationBox.Text = "";
+            // 
+            // InfromationLabel
+            // 
+            this.InfromationLabel.AccessibleName = "informationLabel";
+            this.InfromationLabel.AutoSize = true;
+            this.InfromationLabel.Location = new System.Drawing.Point(12, 312);
+            this.InfromationLabel.Name = "InfromationLabel";
+            this.InfromationLabel.Size = new System.Drawing.Size(98, 16);
+            this.InfromationLabel.TabIndex = 6;
+            this.InfromationLabel.Text = "Information Box";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.InfromationLabel);
+            this.Controls.Add(this.InformationBox);
             this.Controls.Add(this.buttonBox);
             this.Controls.Add(this.problemBox);
             this.Controls.Add(this.signSelctionbox);
@@ -338,6 +377,7 @@
             this.problemBox.PerformLayout();
             this.buttonBox.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -346,9 +386,9 @@
         private System.Windows.Forms.GroupBox studentInformatoinBox;
         private System.Windows.Forms.TextBox gradeBox;
         private System.Windows.Forms.TextBox nameBox;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label GradeLabel;
+        private System.Windows.Forms.Label AgeLabel;
+        private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.GroupBox signSelctionbox;
         private System.Windows.Forms.RadioButton divideButton;
         private System.Windows.Forms.RadioButton multiplyButton;
@@ -357,16 +397,18 @@
         private System.Windows.Forms.GroupBox problemBox;
         private System.Windows.Forms.TextBox secondNumbertext;
         private System.Windows.Forms.TextBox firstNumbertext;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label firstNumberlabel;
+        private System.Windows.Forms.Label SecondNumberLabel;
+        private System.Windows.Forms.Label FirstNumberLabel;
         private System.Windows.Forms.GroupBox buttonBox;
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Button summeryButton;
         private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.Button submitButton;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label StudentAnswerLabel;
         private System.Windows.Forms.TextBox studentAnswer;
         private System.Windows.Forms.ComboBox ageBox;
+        private System.Windows.Forms.RichTextBox InformationBox;
+        private System.Windows.Forms.Label InfromationLabel;
     }
 }
 
