@@ -243,7 +243,7 @@
             // firstNumberlabel
             // 
             this.firstNumberlabel.AutoSize = true;
-            this.firstNumberlabel.Location = new System.Drawing.Point(26, 26);
+            this.firstNumberlabel.Location = new System.Drawing.Point(38, 26);
             this.firstNumberlabel.Name = "firstNumberlabel";
             this.firstNumberlabel.Size = new System.Drawing.Size(83, 16);
             this.firstNumberlabel.TabIndex = 2;
@@ -259,7 +259,7 @@
             // 
             // firstNumbertext
             // 
-            this.firstNumbertext.Location = new System.Drawing.Point(29, 45);
+            this.firstNumbertext.Location = new System.Drawing.Point(43, 45);
             this.firstNumbertext.Name = "firstNumbertext";
             this.firstNumbertext.ReadOnly = true;
             this.firstNumbertext.Size = new System.Drawing.Size(100, 22);
@@ -317,6 +317,7 @@
             this.submitButton.TabIndex = 0;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // Form1
             // 

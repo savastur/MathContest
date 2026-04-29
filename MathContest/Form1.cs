@@ -4,6 +4,11 @@
  * [x] Limit age 7-11 appear yellow when out of range
  * [x] Lock Submit button until all fields are filled ( grade, name, and age)
  * [] Lock the Summary button until the submit button has been clicked once
+ * [] Allow selection of add, divde, multiply, and subtract operations
+ * [] set up message box for submit button
+ * [] set up message box for summary
+ * [] verify the student answer when the they press the submit button
+ * [] Creat a tally of how many the student got correct
 */
 using System;
 using System.Collections.Generic;
@@ -26,35 +31,25 @@ namespace MathContest
             InitializeComponent();
             Defults();
         }
+        /// Sets the defults of the program
         void Defults()
         {
             addButton.Enabled = true;
             submitButton.Enabled = false;
             summeryButton.Enabled = false;
         }
-        private int Numbers()
+        private int FirstNumber()
         {
             Random randomNumber = new Random();
-            int randomValue = randomNumber.Next(1, 7);
-            int[] numberIndex = new int[10];
-            numberIndex[0] = 1;
-            numberIndex[1] = 2;
-            numberIndex[2] = 3;
-            numberIndex[3] = 4;
-            numberIndex[4] = 5;
-            numberIndex[5] = 6;
-            numberIndex[6] = 7;
-            numberIndex[7] = 8;
-            numberIndex[8] = 9;
-            numberIndex[9] = 10;
-            return numberIndex[randomValue];
+            int randomValue = randomNumber.Next(1, 11);
+            return randomValue;
         }
         void Verify()
         {
             string verifyName = nameBox.Text;
             string verifyAge = ageBox.Text;
             string verifyGrade = gradeBox.Text;
-           
+           ///Let's the user know when the name box is improperly filled 
             if(verifyName == "")
             {
                 nameBox.BackColor = Color.LightYellow;
@@ -67,6 +62,7 @@ namespace MathContest
             {
                 ageBox.BackColor = Color.LightYellow;
             }
+            /// Lets the user know when the age box is imporperly filled 
             try
             {
                 int ageNumber = Convert.ToInt16(verifyAge);
@@ -89,6 +85,7 @@ namespace MathContest
             {
                 gradeBox.BackColor = Color.LightYellow;
             }
+            /// Let's the user know when grade box is imporperly filled 
             try
             {
                 int gradeNumber = Convert.ToInt16(verifyGrade);
@@ -104,6 +101,7 @@ namespace MathContest
                 gradeBox.BackColor = Color.LightYellow;
                 gradeBox.Text = "";
             }
+            /// Verification to enbale teh submit button
             if(verifyAge != "" && verifyGrade != "")
             {
                 int ageNumber = Convert.ToInt16(verifyAge);
@@ -119,30 +117,45 @@ namespace MathContest
                 }
             }
         }
-
+        ///Only Enterd when name is changed 
+        ///Will disable if value changes
         private void nameBox_TextChanged(object sender, EventArgs e)
         {
+            Defults();
             NameTracker();
             Verify();
         }
+        /// Only enterd when grade box is changed
+        /// Will disable if value changes
         private void gradeBox_TextChanged(object sender, EventArgs e)
         {
+            Defults();
             Verify();
         }
+        /// Only entered when age box is changed
+        /// Will disable if value changes
         private void ageBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Defults();
             Verify();
         }
+        /// Confirm name creates a bool for the verficaton process only for the name.
         private bool ConfirmName()
         {
             string name = nameBox.Text;
             return NameTracker() == name;
         }
+        /// Name tracker creates a memory of the name that's wich can be called uppon when needed.
         private string NameTracker()
         {
             string[] name = new string[1];
             name[0] = nameBox.Text;
             return name[0];
+        }
+
+        private void submitButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
