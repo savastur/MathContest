@@ -4,10 +4,10 @@
  * [x] Limit age 7-11 appear yellow when out of range
  * [x] Lock Submit button until all fields are filled ( grade, name, and age)
  * [] Lock the Summary button until the submit button has been clicked once
- * [] Allow selection of add, divde, multiply, and subtract operations
+ * [x] Allow selection of add, divde, multiply, and subtract operations
  * [x] set up message box for submit button
  * [] set up message box for summary
- * [] verify the student answer when the they press the submit button
+ * [x] verify the student answer when the they press the submit button
  * [] Creat a tally of how many the student got correct
 */
 using System;
@@ -38,20 +38,27 @@ namespace MathContest
             submitButton.Enabled = false;
             summeryButton.Enabled = false;
         }
-        private int FirstNumber()
+        private int RandomNumberGenerator()
         {
             Random randomNumber = new Random();
             int randomValue = randomNumber.Next(1, 11);
-            firstNumbertext.Text = randomValue.ToString();
+            FirstNumber(randomValue);
+            int secondRanomvalue = randomNumber.Next(1, 11);
+            SecondNumber(secondRanomvalue);
             return randomValue;
         }
-        private int SecondNumber()
+        ///The first and second number become variables with this setup
+        private int FirstNumber(int firstValue)
         {
-            Random randomNumber = new Random();
-            int randomValue = randomNumber.Next(1, 11); 
-            secondNumbertext.Text = randomValue.ToString();
-            return randomValue;
+            firstNumbertext.Text = firstValue.ToString();
+            return firstValue;
         }
+        private int SecondNumber(int secondValue)
+        {
+            secondNumbertext.Text = secondValue.ToString();
+            return secondValue;
+        }
+        /// Verify's all student info is inputed properly
         void Verify()
         {
             string verifyName = nameBox.Text;
@@ -122,6 +129,7 @@ namespace MathContest
                 if (nameConfirmed && gradeConfirmed && ageConfirmed == true)
                 {
                     submitButton.Enabled = true;
+                    RandomNumberGenerator();
                 }
             }
         }
@@ -169,32 +177,39 @@ namespace MathContest
             if (answercComparison == contestentAnswer)
             {
                 MessageBox.Show("That is the correct answer");
+                RandomNumberGenerator();
             }
             if (answercComparison != contestentAnswer)
             {
                 MessageBox.Show($"That is not the correct answer, the answer is {answer}.");
+                RandomNumberGenerator();
             }
         }
+        ///This method is the operation control for the math contest.
+        ///It takes the first Number and second Number the performs the operation selected
         private int Operations(out int answer)
         {
+           //Converts the text box of the fist and second number into it's integer equivalent.
+           int firstNumber = int.Parse(firstNumbertext.Text);
+           int secondNumber = int.Parse(secondNumbertext.Text);
            if (addButton.Checked  == true)
            {
-                answer = FirstNumber() + SecondNumber();
+                answer = firstNumber + secondNumber;
                 return  answer;
            }
            if (subtractButton.Checked == true)
            {
-               answer = FirstNumber() - SecondNumber();
-               return answer;
+                answer = firstNumber - secondNumber;
+                return answer;
            }
            if (divideButton.Checked == true)
            {
-                answer = FirstNumber() / SecondNumber();
+                answer = firstNumber / secondNumber;
                 return answer;
            }
            if (multiplyButton.Checked == true)
            {
-                answer = FirstNumber() * SecondNumber();
+                answer = firstNumber * secondNumber;
                 return answer;
            }
            return answer = 0;
