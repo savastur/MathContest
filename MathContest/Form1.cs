@@ -5,7 +5,7 @@
  * [x] Lock Submit button until all fields are filled ( grade, name, and age)
  * [] Lock the Summary button until the submit button has been clicked once
  * [] Allow selection of add, divde, multiply, and subtract operations
- * [] set up message box for submit button
+ * [x] set up message box for submit button
  * [] set up message box for summary
  * [] verify the student answer when the they press the submit button
  * [] Creat a tally of how many the student got correct
@@ -34,7 +34,7 @@ namespace MathContest
         /// Sets the defults of the program
         void Defults()
         {
-            addButton.Enabled = true;
+            addButton.Checked = true;
             submitButton.Enabled = false;
             summeryButton.Enabled = false;
         }
@@ -42,6 +42,14 @@ namespace MathContest
         {
             Random randomNumber = new Random();
             int randomValue = randomNumber.Next(1, 11);
+            firstNumbertext.Text = randomValue.ToString();
+            return randomValue;
+        }
+        private int SecondNumber()
+        {
+            Random randomNumber = new Random();
+            int randomValue = randomNumber.Next(1, 11); 
+            secondNumbertext.Text = randomValue.ToString();
             return randomValue;
         }
         void Verify()
@@ -155,7 +163,41 @@ namespace MathContest
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-
+            int answer = Operations(out answer);
+            string contestentAnswer = studentAnswer.Text;
+            string answercComparison = answer.ToString();
+            if (answercComparison == contestentAnswer)
+            {
+                MessageBox.Show("That is the correct answer");
+            }
+            if (answercComparison != contestentAnswer)
+            {
+                MessageBox.Show($"That is not the correct answer, the answer is {answer}.");
+            }
+        }
+        private int Operations(out int answer)
+        {
+           if (addButton.Checked  == true)
+           {
+                answer = FirstNumber() + SecondNumber();
+                return  answer;
+           }
+           if (subtractButton.Checked == true)
+           {
+               answer = FirstNumber() - SecondNumber();
+               return answer;
+           }
+           if (divideButton.Checked == true)
+           {
+                answer = FirstNumber() / SecondNumber();
+                return answer;
+           }
+           if (multiplyButton.Checked == true)
+           {
+                answer = FirstNumber() * SecondNumber();
+                return answer;
+           }
+           return answer = 0;
         }
     }
 }
