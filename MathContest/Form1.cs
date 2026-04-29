@@ -1,4 +1,8 @@
-﻿/*
+﻿//Sturm Savage
+//RCET2265
+//Spring Semester 2026
+//https://github.com/savastur/MathContest.git
+/*
  * [x] Make the name, grade, and age textbox appear yellow
  * [x] Limit grade 1-4 appear yellow when out of range
  * [x] Limit age 7-11 appear yellow when out of range
@@ -175,7 +179,6 @@ namespace MathContest
                 return true;
             }
         }
-
         private void submitButton_Click(object sender, EventArgs e)
         {
             summeryButton.Enabled = true; //Enables summery button as soon as the submit button is pressed
